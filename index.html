@@ -39,7 +39,7 @@
       });
 	  
 	   $('#messageForm').submit(function() {
-        socket.emit('message', $('#m').val());
+        socket.emit('message', $('#m').val().replace(/</g,''));
         $('#m').val('');
         return false;
       });

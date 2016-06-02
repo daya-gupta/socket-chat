@@ -14,8 +14,14 @@
     </style>
   </head>
   <body>
+  
+  	
     <ul id="messages"></ul>
-    <form action="">
+<form id="joinForm" action="">
+  			<input type="text" placeholder="Your name" id="name">
+			<button>Join</button>
+		</form>
+    <form id="messageForm" action="" style="display: none;">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
 
@@ -23,7 +29,16 @@
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
       var socket = io();
-      $('form').submit(function() {
+      
+	  $('#joinForm').submit(function() {
+        socket.emit('join', $('#name').val());
+		 $('#joinForm').hide();
+		 $('ul').append('<li>'+'Connected successfully to the server!!'+'</li>')
+		 $('#messageForm').delay(1000).show();
+        return false;
+      });
+	  
+	   $('#messageForm').submit(function() {
         socket.emit('message', $('#m').val());
         $('#m').val('');
         return false;

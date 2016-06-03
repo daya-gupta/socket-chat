@@ -39,7 +39,8 @@
     border: 1px solid #ccc;
     height: 100%;">
 	Video Player
-	<video src="" id ="video" style="width:30%" autoplay="true">
+	<video src="" id ="video" style="width:30%">
+	<video autoplay></video>
 	</video> 
 	
 	<canvas id="preview"></canvas>
@@ -59,7 +60,7 @@
 	  
 	  setInterval(function()
 	  { viewVideo(video,context);
-	  },500);
+	  },50);
 	  
 		var socket = io();
   	  //var canvas =  $('#preview');
@@ -74,8 +75,8 @@
 	  function loadCam(stream)
 	  {
 	  $('#video1').attr('src','/static/a.jpg');
-	  //video.src=window.URL.creatObjectURL(stream);
-	  $('#video').attr('src',URL.creatObjectURL(stream));
+	  video.src=window.URL.createObjectURL(stream);
+	  //$('#video').attr('src',URL.creatObjectURL(stream));
 	  
 	  
 	  }

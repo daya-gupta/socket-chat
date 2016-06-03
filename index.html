@@ -1,6 +1,7 @@
-<!doctype html>
-<html>
-  <head>
+<!DOCTYPE html>
+<html style="
+    height: 100%;
+"><head>
     <title>Socket.IO chat</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -8,32 +9,92 @@
       form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
       form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
       form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+	  .login {background: #000; padding: 3px; position: relative; width: 100%; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
     </style>
   </head>
   <body>
-  
+<div style="
+    display: inline-block;
+    width: 70%;
+    height: 100%;
+">  
   	
     <ul id="messages"></ul>
-<form id="joinForm" action="">
+<form class="login" id="joinForm" action="">
   			<input type="text" placeholder="Your name" id="name">
 			<button>Join</button>
 		</form>
+		
     <form id="messageForm" action="" style="display: none;">
-      <input id="m" autocomplete="off" /><button>Send</button>
+      <input id="m" autocomplete="off"><button>Send</button>
     </form>
-
+  
+  </div>
+  <div style="
+    display: inline-block;
+    width: 29%;
+    border: 1px solid #ccc;
+    height: 100%;">
+	Video Player
+	<video src="" id ="video" style="width:30%" autoplay="true">
+	</video> 
+	
+	<canvas id="preview"></canvas>
+	</div>
+<img src="" id ="video1" style="width:200px;height:200px;">
+	</img>
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-      var socket = io();
-      
+	
+		$(function() {
+			 navigator.getUserMedia=(navigator.getUserMedia||navigator.webKitGetUserMedia||navigator.mozGetUserMedia||navigator.msgGetUserMedia);
+	   
+	   if(navigator.getUserMedia)
+	   {navigator.getUserMedia({video:true},loadCam,loadFail);
+	   }
+	  
+	  setInterval(function()
+	  { viewVideo(video,context);
+	  },500);
+	  
+		var socket = io();
+  	  //var canvas =  $('#preview');
+	  var c = document.getElementById('preview');
+	  var context = c.getContext('2d');
+	  
+	  c.width=200;
+	  c.height=200;
+	  context.width=c.width;
+	  context.height=c.height;
+	  
+	  function loadCam(stream)
+	  {
+	  $('#video1').attr('src','/static/a.jpg');
+	  //video.src=window.URL.creatObjectURL(stream);
+	  $('#video').attr('src',URL.creatObjectURL(stream));
+	  
+	  
+	  }
+	  
+	  function viewVideo (video, context){
+	   context.drawImage(video,0,0, context.width,context.height);
+	   socket.emit('stream',c.toDataURL('image/webp'));
+	  }
+	  
+	  
+	  function loadFail()
+	  {
+	  alert ("camera not detected");
+	  }
+	  
 	  $('#joinForm').submit(function() {
         socket.emit('join', $('#name').val());
 		 $('#joinForm').hide();
-		 $('ul').append('<li>'+'Connected successfully to the server!!'+'</li>')
+		 $('ul').append('<li>'+'You have connected successfully to the server!!'+'</li>')
 		 $('#messageForm').delay(1000).show();
         return false;
       });
@@ -48,6 +109,8 @@
         $('ul').append('<li>'+msg+'</li>')
         // $('ul').append($('<li>').text(msg))
       });
+		});
+      
     </script>
-  </body>
-</html>
+  
+</body></html>

@@ -21,7 +21,7 @@ io.on('connection', function(socket) {
     });
 	
 	  socket.on('stream', function(image) {
-	  console.log('imageURL:' + image);
+	  //console.log('imageURL:' + image);
         socket.broadcast.emit('stream',image);
     });
 	 socket.on('join', function(username) {

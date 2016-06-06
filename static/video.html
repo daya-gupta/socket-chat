@@ -1,0 +1,45 @@
+<div id="videoPreview">
+    Video Preview..
+    <video src="" id="video" autoplay="true"></video> 
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.6/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
+
+<script>
+    navigator.getUserMedia({video:true},loadCam,loadFail);
+
+    setInterval(function() {
+    viewVideo(video,context);
+    },200);
+    
+    var socket = io();
+    var c = document.getElementById('preview');
+    var context = c.getContext('2d');
+
+    c.width=200;
+    c.height=200;
+    context.width=c.width;
+    context.height=c.height;
+
+    function loadCam(stream) {
+        // window.open('/video');
+        $('#video1').attr('src','/static/a.jpg');
+        video.src=window.URL.createObjectURL(stream);
+        //$('#video').attr('src',URL.creatObjectURL(stream));
+    }
+
+    function viewVideo (video, context) {
+        context.drawImage(video,0,0, context.width,context.height);
+        socket.emit('stream',c.toDataURL('image/webp'));
+    }
+
+    function loadFail() {
+        alert ("camera not detected");
+    }
+
+    socket.on('stream', function(image) {
+        var img = document.getElementById('playVid');
+        img.src=image;
+    });
+</script>

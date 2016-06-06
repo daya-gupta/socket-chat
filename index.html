@@ -69,6 +69,7 @@
         <div id="user-details-container" style="">
             <button id="video-start-btn" type="button">Start Video Chat</button>
             <button id="video-stop-btn" type="button">Start Video Chat</button>
+            <img id="playVid" src="" alt="">
         </div>
     
         <script src="/socket.io/socket.io.js"></script>
@@ -126,8 +127,6 @@
                     c.height=200;
                     context.width=c.width;
                     context.height=c.height;
-                    // context.width = 200;
-                    // context.height = 200;
 
                     setInterval(function() {
                         viewVideo(video,context);
@@ -140,8 +139,8 @@
                 });
 
                 socket.on('stream', function(image) {
-                    // var img = document.getElementById('playVid');
-                    // img.src=image;
+                    var img = document.getElementById('playVid');
+                    img.src=image;
                 });
 
                 socket.on('message', function(msg) {

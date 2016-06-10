@@ -1,0 +1,47 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { height: 100%;}
+body { font: 13px Helvetica, Arial; height: 100%;}
+form { background: #000; padding: 3px; position: absolute; bottom: 0; width: 100%; }
+form input { border: 0; padding: 10px; width: 88%; margin-right: .5%; }
+form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+.login {background: #000; padding: 3px; position: absolute; width: 100%; }
+#messages { list-style-type: none; margin: 0; padding: 0; }
+#messages li { padding: 5px 10px; }
+#messages li:nth-child(odd) { background: #eee; }
+#videoPreview {
+    display: inline-block; width: 120px; border: 1px solid #ccc;
+}
+#videoStream {
+    display: inline-block; width: 40%; border: 1px solid #ccc;
+}
+#liveVideo {
+    width: 100%;
+}
+#preview {
+    width: 100%;
+}
+#message-container {
+    display: inline-block; width: 70%; height: 100%; position: relative;
+}
+#user-details-container {
+    display: inline-block; width: 29%; border: 1px solid #ccc; height: 100%; position: absolute; top:0
+}
+#video-section {
+    position: absolute;
+    bottom: 44px;
+    width: 100%;
+}
+
+
+#canvasPreview {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background-color: black;
+}
+#controls {
+    text-align: center;
+}
+#start_button, #stop_button {
+    font-size: 16pt;
+}

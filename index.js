@@ -55,6 +55,7 @@ var server = https.createServer(options, app);
 var io = require('socket.io')(server);
 
 app.use('/static', express.static('static'));
+app.use('/node_modules', express.static('node_modules'));
 
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/index.html');
@@ -78,7 +79,12 @@ io.on('connection', function(socket) {
     
     socket.on('stream', function(image) {
         //console.log('imageURL:' + image);
-        socket.broadcast.emit('stream',image);
+        // socket.broadcast.emit('stream',image);
+        socket.emit('stream',image);
+    });
+
+    socket.on('audioStream', function(stream) {
+        socket.emit('audioStream2', stream);
     });
 
     socket.on('join', function(username) {

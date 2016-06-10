@@ -4,6 +4,7 @@ $(function() {
     var streamingVideoContainer = document.querySelector('#streamingVideoContainer');
     var liveVideoContainer = document.querySelector('#liveVideo')
     var videoTrack = null;
+    var intervalHandler = null;
     
     function loadCam(stream) {
         videoTrack = stream.getTracks()[0];
@@ -34,7 +35,7 @@ $(function() {
         context.width=canvasPreview.width;
         context.height=canvasPreview.height;
 
-        setInterval(function() {
+        intervalHandler = setInterval(function() {
             viewVideo(context);
         },200);
 
@@ -43,6 +44,7 @@ $(function() {
     $('#video-stop-btn').click(function() {
         videoTrack.stop();
         liveVideoContainer.src = '';
+        clearInterval(intervalHandler);
         streamingVideoContainer.src = '';
     });
 

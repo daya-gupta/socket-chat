@@ -43,7 +43,7 @@ var https = require('https');
 var express = require('express');
 var app = express();
 
-var certsPath = __dirname +'/certs';
+var certsPath = __dirname +'/certificates';
 var people = {};
 
 var options = {

@@ -8,14 +8,9 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 #messages { list-style-type: none; margin: 0; padding: 0; }
 #messages li { padding: 5px 10px; }
 #messages li:nth-child(odd) { background: #eee; }
-#videoPreview {
-    display: inline-block; width: 120px; border: 1px solid #ccc;
-}
+
 #videoStream {
     display: inline-block; width: 40%; border: 1px solid #ccc;
-}
-#liveVideo {
-    width: 100%;
 }
 #preview {
     width: 100%;
@@ -28,10 +23,19 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 }
 #video-section {
     position: absolute;
-    bottom: 44px;
+    bottom: 40px;
     width: 100%;
 }
 
+#video-preview {
+    width: 100%;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+
+#live-video {
+    height: 130px;
+}
 
 #canvasPreview {
     margin-left: auto;

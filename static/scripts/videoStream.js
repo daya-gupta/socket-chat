@@ -2,13 +2,13 @@ $(function() {
 
     var canvasPreview = document.querySelector('#canvasPreview');
     var streamingVideoContainer = document.querySelector('#streamingVideoContainer');
-    var liveVideoContainer = document.querySelector('#liveVideo')
+    var liveVideoContainer = document.querySelector('#live-video')
     var videoTrack = null;
     var intervalHandler = null;
     
     function loadCam(stream) {
         videoTrack = stream.getTracks()[0];
-        liveVideo.src=window.URL.createObjectURL(stream);
+        liveVideoContainer.src=window.URL.createObjectURL(stream);
         // liveVideoContainer.attr('src',URL.creatObjectURL(stream));
     }
 
@@ -18,7 +18,7 @@ $(function() {
 
     function viewVideo (context) {
         context.drawImage(liveVideoContainer, 0, 0, context.width,context.height);
-        socket.emit('stream', canvasPreview.toDataURL('image/webp'));
+        socket.emit('videoStream', canvasPreview.toDataURL('image/webp'));
     }
 
     $('#video-start-btn').click(function() {
@@ -48,7 +48,7 @@ $(function() {
         streamingVideoContainer.src = '';
     });
 
-    socket.on('stream', function(image) {
+    socket.on('videoStreamS', function(image) {
         // var img = $('#streamingVideoContainer')[0];
         // img.src=image;
         streamingVideoContainer.src = image;

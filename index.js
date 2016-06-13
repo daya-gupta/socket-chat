@@ -1,6 +1,7 @@
 
 var fs = require('fs');
 var https = require('https');
+var handlebars = require('handlebars');
 
 var express = require('express');
 var app = express();
@@ -30,24 +31,30 @@ app.get('/video', function(req, res) {
 io.on('connection', function(socket) {
     console.log('a user connected!!');
 
+    // user disconnection
     socket.on('disconnect', function() {
         console.log('a disconnection!!');
     });
     
+    // text message
     socket.on('message', function(msg) {
         console.log('message: '+msg);
         io.emit('message', people[socket.id]+' : '+msg);
     });
     
-    socket.on('stream', function(image) {
-        // socket.broadcast.emit('stream',image);
-        socket.emit('stream',image);
+    // video stream
+    socket.on('videoStream', function(image) {
+        socket.broadcast.emit('videoStreamS',image);
+        // io.emit('videoStream', image);
     });
 
+    // audio stream
     socket.on('audioStream', function(stream) {
-        socket.emit('audioStream2', stream);
+        // io.emit('audioStreamS', stream);
+        socket.broadcast.emit('audioStreamS', stream);
     });
 
+    // user connection
     socket.on('join', function(username) {
         people[socket.id] = username;
         console.log('username  joined: '+username);

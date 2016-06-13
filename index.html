@@ -3,6 +3,7 @@
     <head>
         <title>Socket.IO chat</title>
         <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="/static/styles/main.css">
         <style>
             
@@ -12,11 +13,26 @@
     <body>
         <div id="message-container" style="">  
             <ul id="messages"></ul>
-
+            <!-- <div>
+                <button id="record">Record</button>
+                <button id="stop">Stop</button>
+                <div id="soundClips">soundClips</div>
+            </div> -->
+            <!-- <div>
+                <audio src="" controls></audio>
+                <div id="viz">
+                    <canvas id="analyser" width="224" height="200"></canvas>
+                    <canvas id="wavedisplay" width="224" height="200"></canvas>
+                </div>
+                <div id="controls">
+                    <img id="record" alt="record" src="img/mic128.png">
+                    <a id="save" href="#"><img src="img/save.svg" alt="export"></a>
+                </div>
+            </div> -->
             <div id="video-section">
-                <div id="videoPreview">
-                    Video Preview..
-                    <video src="" id="liveVideo" autoplay="true"></video> 
+                <div id="video-preview">
+                    <!-- live video -->
+                    <video src="" id="live-video" autoplay="true"></video> 
                 </div>
 
                 <div style="display:none;">
@@ -37,28 +53,34 @@
         </div>
 
         <div id="user-details-container" style="">
-            <button id="video-start-btn" type="button">Start Video Chat</button>
-            <button id="video-stop-btn" type="button">Stop Video Chat</button>
+            <button class="btn btn-sm btn-primary" id="video-start-btn" type="button">Start Video Chat</button>
+            <button class="btn btn-sm btn-primary" id="video-stop-btn" type="button">Stop Video Chat</button>
             
             <br>
+            <br>
             
-            <button id="audio-start-btn" type="button">Start Audio Chat</button>
-            <button id="audio-stop-btn" type="button">Stop Audio Chat</button>
+            <button class="btn btn-sm btn-primary" id="audio-start-btn" type="button">Start Audio Chat</button>
+            <button class="btn btn-sm btn-primary" id="audio-stop-btn" type="button">Stop Audio Chat</button>
             <img id="streamingVideoContainer" src="">
             
-            <p style="text-align:center">
+            <br>
+            <br>
+            
+            <audio src="" controls autoplay></audio>
+            
+            <!-- <p style="text-align:center">
                 <button class="btn btn-primary" id="play_button" style="font-size: 18px">Click to Play audio file</button>
-            </p>
+            </p> -->
 
-            <p style="text-align: center">Click Start and begin speaking</p>
-            <canvas id="canvas" width="800" height="256" ></canvas>
+            <!-- <p style="text-align: center">Click Start and begin speaking</p>
+            <canvas id="canvas" width="800" height="256" ></canvas> -->
 
-            <p id="controls">
+            <!-- <p id="controls">
               <input type="button" id="start_button" value="Start">
               &nbsp; &nbsp;
               <input type="button" id="stop_button" value="Stop">
-            </p>
-            <button class="btn" id="buttonId">Click to play random audio buffer</button>
+            </p> -->
+            <!-- <button class="btn" id="buttonId">Click to play random audio buffer</button> -->
         </div>
     
         <script src="/socket.io/socket.io.js"></script>
@@ -70,6 +92,8 @@
             // });
         </script>
         <script src="/static/scripts/textChat.js"></script>
+        <!-- <script src="/static/scripts/recorderWorker.js"></script> -->
+        <script src="/static/scripts/recorder.js"></script>
         <script src="/static/scripts/audioStream.js"></script>
         <script src="/static/scripts/videoStream.js"></script>
         

@@ -43,15 +43,20 @@ $(function() {
 
     $('#video-stop-btn').click(function() {
         videoTrack.stop();
+        socket.emit('mediaEnd', 'video');
         liveVideoContainer.src = '';
         clearInterval(intervalHandler);
-        streamingVideoContainer.src = '';
+        // streamingVideoContainer.src = '';
     });
 
     socket.on('videoStreamS', function(image) {
         // var img = $('#streamingVideoContainer')[0];
         // img.src=image;
         streamingVideoContainer.src = image;
+    });
+
+    socket.on('mediaEndS', function(media) {
+        streamingVideoContainer.src = '';
     });
 
 });

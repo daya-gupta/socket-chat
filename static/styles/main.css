@@ -22,19 +22,20 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
     display: inline-block; width: 29%; border: 1px solid #ccc; height: 100%; position: absolute; top:0
 }
 #video-section {
-    position: absolute;
-    bottom: 40px;
-    width: 100%;
+    position: relative;
+    text-align: center;
 }
 
 #video-preview {
-    width: 100%;
-    text-align: center;
-    border: 1px solid #ccc;
+    position: absolute;
+    text-align: right;
+    right: 0;
+    top: 0;
 }
 
 #live-video {
-    height: 130px;
+    height: 80px;
+    border: 1px solid transparent;
 }
 
 #canvasPreview {
@@ -48,4 +49,73 @@ form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 
 }
 #start_button, #stop_button {
     font-size: 16pt;
+}
+
+
+
+
+/*------------------------override-------------------------------*/
+
+.container {
+    height: 100%;
+}
+
+.inner-container, .user-details-container {
+    height: 100%;
+}
+
+.message-container {
+    height: 100%;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+.user-details-container {
+    height: 100%;
+    border-right: 1px solid #ccc;
+}
+
+.text-chat, .video-chat {
+    position: relative;
+    height: 100%;
+}
+
+.text-chat #messages {
+    height: 100%;
+    position: relative;
+    overflow: auto;
+}
+
+.video-chat #messages {
+    position: absolute;
+    top: 160px;
+    bottom: 44px;
+    overflow: auto;
+    background-color: #dde4e7;
+    width: 100%;
+}
+
+#messageForm {
+    background: #fff;
+    border-top: 1px solid #bbb;
+    padding: 8px 0;
+    position: absolute;
+    bottom: 0;
+    height: 46px;
+    width: 100%;
+}
+
+.message-textbox {
+    width: 80%;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+audio {
+    width: 62%;
+}
+
+#streamingVideoContainer {
+    height: 160px;
+    border: 1px solid transparent;
 }

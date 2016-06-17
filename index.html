@@ -11,76 +11,78 @@
     </head>
     
     <body>
-        <div id="message-container" style="">  
-            <ul id="messages"></ul>
-            <!-- <div>
-                <button id="record">Record</button>
-                <button id="stop">Stop</button>
-                <div id="soundClips">soundClips</div>
-            </div> -->
-            <!-- <div>
-                <audio src="" controls></audio>
-                <div id="viz">
-                    <canvas id="analyser" width="224" height="200"></canvas>
-                    <canvas id="wavedisplay" width="224" height="200"></canvas>
-                </div>
-                <div id="controls">
-                    <img id="record" alt="record" src="img/mic128.png">
-                    <a id="save" href="#"><img src="img/save.svg" alt="export"></a>
-                </div>
-            </div> -->
-            <div id="video-section">
-                <div id="video-preview">
-                    <!-- live video -->
-                    <video src="" id="live-video" autoplay="true"></video> 
+        <div class="container">
+            <div class="inner-container row">
+                <!-- <div id="message-container" style="">   -->
+                <div class="message-container col-sm-8 col-xs-12">  
+                    <!-- <div class="text-chat">
+                        <ul id="messages"></ul>
+                    </div> -->
+
+                    <div class="video-chat">
+                        <div id="video-section">
+
+                            <img id="streamingVideoContainer" alt="No Video Shared.." src="">
+                            
+                            <div id="video-preview">
+                                <!-- live video -->
+                                <video src="" id="live-video" autoplay="true"></video> 
+                            </div>
+
+                            <div style="display:none;">
+                                Streaming Video..
+                                <canvas id="canvasPreview"></canvas>
+                            </div>
+                        </div>
+
+                        <ul id="messages"></ul>
+
+                        <form id="messageForm"">
+                                <input class="message-textbox" id="m" autocomplete="off">
+                                <button class="message-btn btn btn-primary">Send</button>
+                        </form>
+                    </div>
+                    
+                    <!-- <form class="login" id="joinForm" action="">
+                        <input type="text" placeholder="Your name" id="name">
+                        <button class="btn btn-primary">Join</button>
+                    </form> -->
+                    
+                    
                 </div>
 
-                <div style="display:none;">
-                    Streaming Video..
-                    <canvas id="canvasPreview"></canvas>
+                <div class="user-details-container col-sm-4 col-xs-12">
+                <!-- <div id="user-details-container" style=""> -->
+                    <button class="btn btn-sm btn-primary" id="video-start-btn" type="button">Start Video Chat</button>
+                    <button class="btn btn-sm btn-primary" id="video-stop-btn" type="button">Stop Video Chat</button>
+                    
+                    <br>
+                    <br>
+                    
+                    <button class="btn btn-sm btn-primary" id="audio-start-btn" type="button">Start Audio Chat</button>
+                    <button class="btn btn-sm btn-primary" id="audio-stop-btn" type="button">Stop Audio Chat</button>
+                    
+                    <br>
+                    <br>
+                    
+                    <audio src="" controls autoplay></audio>
+                    <audio src="" id="audio2" controls autoplay></audio>
+                    
+                    <!-- <p style="text-align:center">
+                        <button class="btn btn-primary" id="play_button" style="font-size: 18px">Click to Play audio file</button>
+                    </p> -->
+
+                    <!-- <p style="text-align: center">Click Start and begin speaking</p>
+                    <canvas id="canvas" width="800" height="256" ></canvas> -->
+
+                    <!-- <p id="controls">
+                      <input type="button" id="start_button" value="Start">
+                      &nbsp; &nbsp;
+                      <input type="button" id="stop_button" value="Stop">
+                    </p> -->
+                    <!-- <button class="btn" id="buttonId">Click to play random audio buffer</button> -->
                 </div>
             </div>
-
-            <form class="login" id="joinForm" action="">
-                <input type="text" placeholder="Your name" id="name">
-                <button class="btn btn-primary">Join</button>
-            </form>
-            
-            <form id="messageForm" action="" style="display: none;">
-                <input id="m" autocomplete="off">
-                <button class="btn btn-primary">Send</button>
-            </form>
-        </div>
-
-        <div id="user-details-container" style="">
-            <button class="btn btn-sm btn-primary" id="video-start-btn" type="button">Start Video Chat</button>
-            <button class="btn btn-sm btn-primary" id="video-stop-btn" type="button">Stop Video Chat</button>
-            
-            <br>
-            <br>
-            
-            <button class="btn btn-sm btn-primary" id="audio-start-btn" type="button">Start Audio Chat</button>
-            <button class="btn btn-sm btn-primary" id="audio-stop-btn" type="button">Stop Audio Chat</button>
-            <img id="streamingVideoContainer" src="">
-            
-            <br>
-            <br>
-            
-            <audio src="" controls autoplay></audio>
-            
-            <!-- <p style="text-align:center">
-                <button class="btn btn-primary" id="play_button" style="font-size: 18px">Click to Play audio file</button>
-            </p> -->
-
-            <!-- <p style="text-align: center">Click Start and begin speaking</p>
-            <canvas id="canvas" width="800" height="256" ></canvas> -->
-
-            <!-- <p id="controls">
-              <input type="button" id="start_button" value="Start">
-              &nbsp; &nbsp;
-              <input type="button" id="stop_button" value="Stop">
-            </p> -->
-            <!-- <button class="btn" id="buttonId">Click to play random audio buffer</button> -->
         </div>
     
         <script src="/socket.io/socket.io.js"></script>

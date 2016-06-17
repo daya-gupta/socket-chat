@@ -45,7 +45,11 @@ io.on('connection', function(socket) {
     // video stream
     socket.on('videoStream', function(image) {
         socket.broadcast.emit('videoStreamS',image);
-        // io.emit('videoStream', image);
+        // io.emit('videoStreamS', image);
+    });
+
+    socket.on('mediaEnd', function(media) {
+        socket.broadcast.emit('mediaEndS', media);
     });
 
     // audio stream

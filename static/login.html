@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+    <head>
+        <title>Socket.IO chat</title>
+        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="/static/styles/main.css">
+        <style>
+            
+        </style>
+    </head>
+    
+    <body>
+        <div class="container">
+            <div class="inner-container row">
+                <!-- <div id="message-container" style="">   -->
+                <div class="message-container col-xs-12">  
+
+                    <form class="login" id="joinForm" action="/index" method="post">
+                        <input type="text" name="userName" placeholder="User Name" id="userName">
+                        <button class="btn btn-primary submit">Join</button>
+                    </form>
+                    
+                </div>
+
+            </div>
+        </div>
+    
+        <!-- <script src="/socket.io/socket.io.js"></script> -->
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
+        <script>
+            $(function() {
+                $('#joinForm').submit(function() {
+                    debugger
+                    var data = {
+                        userName: $('#name').val()
+                    };
+
+                    // $.ajax({
+                    //     type: 'POST',
+                    //     url: 'https://localhost:3000/authenticateUser',
+                    //     data: data,
+                    //     success: function(res) {
+                    //         debugger;
+                    //         console.log(window.location.href);
+                    //         setTimeout(function() {
+                    //             console.log(window.location.href);
+
+                    //             window.location.href= '/chat';
+                    //             // location.href = location.origin + "/index";
+                    //         }, 1000);
+                    //     }
+                    // });
+                    
+                    // socket.emit('join', $('#name').val());
+                    // $('#joinForm').hide();
+                    // $('ul#messages').append('<li>'+'You have connected successfully to the server!!'+'</li>')
+                    // $('#messageForm').delay(1000).show();
+                    // return false;
+                });
+            });
+        </script> -->
+    </body>
+</html>

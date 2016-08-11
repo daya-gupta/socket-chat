@@ -18,7 +18,6 @@
                     <!-- <div class="text-chat">
                         <ul id="messages"></ul>
                     </div> -->
-
                     <div class="video-chat">
                         <div id="video-section">
 
@@ -58,6 +57,14 @@
                     
                     <br>
                     <br>
+
+                    <div id="loggedInUser">
+                        {{userName}}
+                    </div>
+                    <ul id="users"></ul>
+
+                    <br>
+                    <br>
                     
                     <button class="btn btn-sm btn-primary" id="audio-start-btn" type="button">Start Audio Chat</button>
                     <button class="btn btn-sm btn-primary" id="audio-stop-btn" type="button">Stop Audio Chat</button>
@@ -89,6 +96,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-rc1/jquery.min.js"></script>
         <script>
             var socket = io();
+            var users = null;
             // $(function() {
 
             // });

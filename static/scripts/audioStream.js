@@ -58,7 +58,7 @@ $(function() {
         mediaRecorder.start();
         // console.log('recording started !!')
         // console.log(Date.now());
-      }, 10000);
+      }, 1500);
 
     }
 

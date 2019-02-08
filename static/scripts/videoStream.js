@@ -22,10 +22,25 @@ $(function() {
     }
 
     $('#video-start-btn').click(function() {
-        navigator.getUserMedia = (navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.mozGetUserMedia||navigator.msgGetUserMedia);
+        // navigator.getUserMedia = (navigator.getUserMedia||navigator.webkitGetUserMedia||navigator.mozGetUserMedia||navigator.msgGetUserMedia);
         
-        if(navigator.getUserMedia) {
-            navigator.getUserMedia({video:true}, loadCam, loadCamError);
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            // navigator.getUserMedia({video:true}, loadCam, loadCamError);
+            navigator.mediaDevices.getUserMedia({video: true})
+            .then((mediaStream) => {
+                // videoTrack = stream.getTracks()[0];
+                // liveVideoContainer.src=window.URL.createObjectURL(stream);
+                // liveVideoContainer.attr('src',URL.creatObjectURL(stream));
+                // var video = document.querySelector('video');
+                liveVideoContainer.srcObject = mediaStream;
+                // liveVideoContainer.onloadedmetadata = function(e) {
+                //     liveVideoContainer.play();
+                // };
+            })
+            .catch((error) => {
+                console.log('camera error', error);
+                alert ("camera not detected");
+            });
         }
 
         var context = canvasPreview.getContext('2d');
